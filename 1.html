@@ -1,135 +1,102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>徵信服務 - 專業偵查</title>
+  <meta charset="UTF-8">
+  <title>手機配件購物網</title>
   <style>
-    :root{
-      --bg-green:#e8f7ef; /* 主背景綠 */
-      --accent-dark:#073627; /* 深色文字 */
-      --muted:#2f6b56;
-      --card:#ffffff;
-      --glass: rgba(255,255,255,0.6);
-      --radius:14px;
-      --shadow: 0 8px 24px rgba(7,54,39,0.08);
-      --accent: #1f8a59;
-      font-family: Inter, 'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{
-      background: linear-gradient(180deg,var(--bg-green), #f3fbf6);
-      color:var(--accent-dark);
-      line-height:1.5;
-    }
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo{width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--muted));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:var(--shadow)}
-    nav{display:flex;gap:12px}
-    nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--accent-dark);font-weight:600}
-    nav a.active{background:var(--glass);backdrop-filter: blur(6px)}
-    main{margin-top:30px}
-    section.page{display:none}
-    section.page.active{display:block}
-    h1{font-size:28px;margin-bottom:8px}
-    p.lead{color:var(--muted);margin-bottom:18px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
-    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
-    .card h3{margin-bottom:8px}
-    form{display:grid;gap:10px;margin-top:20px}
-    input,textarea{padding:10px;border-radius:10px;border:1px solid rgba(7,54,39,0.1)}
-    textarea{min-height:100px}
-    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:14px}
-    .illus{display:flex;align-items:center;justify-content:center;margin:20px 0}
-    .illus img{max-width:100%;border-radius:12px;box-shadow:var(--shadow)}
-    .fade-in{animation:fadeIn 2s ease-in}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    body { font-family: sans-serif; padding: 20px; }
+    .product { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    .product h3 { margin: 0; }
+    .product button { margin-top: 10px; }
+    #cart { margin-top: 30px; border-top: 2px solid #000; padding-top: 10px; }
   </style>
-  <script>
-    document.addEventListener("DOMContentLoaded",()=>{
-      const links=document.querySelectorAll("nav a");
-      const pages=document.querySelectorAll("section.page");
-      links.forEach(link=>{
-        link.addEventListener("click",e=>{
-          e.preventDefault();
-          links.forEach(l=>l.classList.remove("active"));
-          link.classList.add("active");
-          const pageId=link.getAttribute("data-page");
-          pages.forEach(p=>p.classList.remove("active"));
-          document.getElementById(pageId).classList.add("active");
-        });
-      });
-    });
-  </script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">DS</div>
-        <div>
-          <div style="font-weight:800">守望徵信</div>
-          <div style="font-size:13px;color:var(--muted)">專業｜守密｜合法</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#" data-page="home" class="active">首頁</a>
-        <a href="#" data-page="services">服務</a>
-        <a href="#" data-page="about">關於我們</a>
-        <a href="#" data-page="contact">聯絡</a>
-      </nav>
-    </header>
+  <h1>📱 手機配件購物網</h1>
 
-    <main>
-      <section id="home" class="page active">
-        <h1>專業徵信服務</h1>
-        <p class="lead">我們提供專業、合法並且保密的徵信服務，守護您的權益。</p>
-        <div class="illus fade-in">
-          <img src="https://via.placeholder.com/600x300?text=精緻插圖" alt="徵信插圖">
-        </div>
-      </section>
+  <div id="product-list"></div>
 
-      <section id="services" class="page">
-        <h1>服務項目</h1>
-        <div class="grid">
-          <div class="card fade-in">
-            <h3>婚姻徵信</h3>
-            <p>協助調查婚姻忠誠度，提供可靠證據。</p>
-          </div>
-          <div class="card fade-in">
-            <h3>商業徵信</h3>
-            <p>企業背景調查，降低商業合作風險。</p>
-          </div>
-          <div class="card fade-in">
-            <h3>尋人服務</h3>
-            <p>專業協助尋找失聯親友與債務人。</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="page">
-        <h1>關於我們</h1>
-        <p class="lead">守望徵信擁有多年專業經驗，堅持合法徵信與高度保密，協助客戶解決困難。</p>
-        <div class="illus fade-in">
-          <img src="https://via.placeholder.com/600x300?text=團隊插圖" alt="團隊插圖">
-        </div>
-      </section>
-
-      <section id="contact" class="page">
-        <h1>聯絡我們</h1>
-        <form>
-          <input type="text" placeholder="您的姓名" required>
-          <input type="email" placeholder="您的Email" required>
-          <textarea placeholder="請輸入訊息" required></textarea>
-          <button type="submit" class="btn-primary" style="padding:10px 16px;border-radius:10px;border:0;color:white;background:var(--accent-dark)">送出</button>
-        </form>
-      </section>
-    </main>
-
-    <footer>
-      <p>© 2025 守望徵信有限公司. All Rights Reserved.</p>
-    </footer>
+  <div id="cart">
+    <h2>🛒 購物車</h2>
+    <ul id="cart-items"></ul>
+    <p id="total">總金額：$0</p>
+    <button onclick="checkout()">結帳</button>
   </div>
+
+  <script>
+    // 商品資料與庫存
+    const products = [
+      { id: 1, name: "iPhone 透明手機殼", price: 300, stock: 5 },
+      { id: 2, name: "Type-C 快充線", price: 200, stock: 10 },
+      { id: 3, name: "9H 鋼化玻璃保護貼", price: 150, stock: 8 }
+    ];
+
+    const cart = [];
+
+    function renderProducts() {
+      const productList = document.getElementById('product-list');
+      productList.innerHTML = '';
+
+      products.forEach(product => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerHTML = `
+          <h3>${product.name}</h3>
+          <p>價格：$${product.price}</p>
+          <p>庫存：${product.stock}</p>
+          <button onclick="addToCart(${product.id})">加入購物車</button>
+        `;
+        productList.appendChild(div);
+      });
+    }
+
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product.stock <= 0) {
+        alert("❌ 庫存不足！");
+        return;
+      }
+
+      product.stock -= 1;
+
+      const existingItem = cart.find(item => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      renderProducts();
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartItems = document.getElementById('cart-items');
+      const totalEl = document.getElementById('total');
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} x ${item.quantity} - $${item.price * item.quantity}`;
+        cartItems.appendChild(li);
+        total += item.price * item.quantity;
+      });
+
+      totalEl.textContent = `總金額：$${total}`;
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("購物車是空的！");
+        return;
+      }
+      alert("✅ 結帳成功，感謝您的購買！");
+      cart.length = 0;
+      renderCart();
+    }
+
+    renderProducts();
+  </script>
 </body>
 </html>
